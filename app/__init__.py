@@ -1,8 +1,14 @@
+import os
+from dotenv import load_dotenv
 from app.plugin_loader import load_plugins
 from app.commands import AddCommand, SubtractCommand, MultiplyCommand, DivideCommand
 
 class App:
     def __init__(self):
+        load_dotenv()
+        
+        environment = os.getenv('ENVIRONMENT', 'production')  
+        print(f"Running in {environment} mode")
 
         self.commands = {
             'add': AddCommand(),
